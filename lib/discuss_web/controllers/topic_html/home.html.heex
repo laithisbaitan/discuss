@@ -1,0 +1,29 @@
+<h3>Topics</h3>
+
+<ul class="
+    list-none divide-y divide-gray-200 
+    dark:divide-gray-700 border 
+    border-gray-200 dark:border-gray-700 
+    rounded-md">
+    <%= for topic <- @topics do %>
+        <li class="text-base font-bold py-2 px-4">
+            <.link href={~p"/topics/#{topic.id}"}><%= topic.title %></.link>
+            <%= if @conn.assigns.user.id == topic.user_id do %>
+                <div class="right">
+                    <.link href={~p"/topics/#{topic.id}/edit"}>
+                        Edit
+                    </.link>
+                    <.link href={~p"/topics/#{topic.id}"} method="delete">
+                        Delete
+                    </.link> 
+                </div>
+            <% end %>
+        </li>
+    <% end %>
+</ul>
+
+<div class="fixed-action-btn">
+    <.link href={~p"/topics/new"} class="btn-floating btn-large waves-effect waves-light red">
+        <i class="material-icons">add</i>
+    </.link>
+</div>

@@ -1,0 +1,14 @@
+<h5><%= @topic.title %></h5>
+
+<div>
+    <textarea id="textarea" class="materialize-textarea"></textarea>
+    <button id="add_btn" class="btn">Add Comment</button>
+    <ul id="comments_list" class="collection">
+    </ul>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+        window.createSocket(<%= @topic.id %>)
+    });
+</script>
